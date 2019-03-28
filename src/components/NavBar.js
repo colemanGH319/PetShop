@@ -7,7 +7,7 @@ import { ButtonContainer } from './Button';
 export default class NavBar extends Component {
   render() {
     return (
-      <NavWrapper className="navbar navbar-expand-sm bg-primary navbar-dark px-sm-5">
+      <NavWrapper className="navbar navbar-expand-sm bg-primary sticky-top navbar-dark px-sm-5">
         <Link to="/">
           <img src={logo} alt="PetShop" className="navbar-brand"/>
         </Link>
@@ -36,4 +36,5 @@ const NavWrapper = styled.nav`
     font-size:1.3rem;
     text-transform:capitalize;
   }
+  z-index: 3;
 `

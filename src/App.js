@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
-import logo from './logo.svg';
 import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css'
-import NavBar from './components/NavBar'
-import ProductList from './components/ProductList'
-import Details from './components/Details'
-import Cart from './components/Cart'
-import Default from './components/Default'
-
+import 'bootstrap/dist/css/bootstrap.min.css';
+import NavBar from './components/NavBar';
+import ProductList from './components/ProductList';
+import Details from './components/Details';
+import Cart from './components/Cart';
+import Default from './components/Default';
+import Modal from './components/Modal';
+import BackgroundOverlay from './components/BackgroundOverlay';
 
 class App extends Component {
   render() {
@@ -21,6 +21,8 @@ class App extends Component {
         <Route path="/cart" component={Cart} />
         <Route component={Default} />
       </Switch>
+      <BackgroundOverlay />
+      <Modal />
       </React.Fragment>
     );
   }
