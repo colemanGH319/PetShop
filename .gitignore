@@ -24,3 +24,6 @@ yarn-error.log*
 
 # original image files
 /public/img-orig
+
+# Environment variable
+.env.development
