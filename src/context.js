@@ -13,7 +13,8 @@ class ProductProvider extends Component {
     modalProduct: detailProduct,
     cartSubTotal: 0,
     cartTax: 0,
-    cartTotal: 0
+    cartTotal: 0,
+    currentSelection: 'all'
   }
 
   componentDidMount() {
@@ -26,6 +27,7 @@ class ProductProvider extends Component {
       const singleItem = {...item};
       tempProducts = [...tempProducts, singleItem];
     })
+
     this.setState(() => {
       return {products:tempProducts}
     })
@@ -34,6 +36,16 @@ class ProductProvider extends Component {
   getItem = (id) => {
     const product = this.state.products.find(item => item.id === id);
     return product;
+  }
+
+  filterItems = (id) => {
+    const navItem = document.getElementById(id)
+    const item = document.getElementById(this.state.currentSelection)
+    item.classList.remove('active')
+    this.setState({
+      currentSelection: navItem.id
+    })
+    navItem.classList.add('active')
   }
 
   handleDetail = (id) => {
@@ -57,7 +69,7 @@ class ProductProvider extends Component {
       },
       () => {this.addTotals()}
     )
-
+    this.filterItems('all')
   }
 
   openModal = (id) => {
@@ -169,7 +181,8 @@ class ProductProvider extends Component {
         increment: this.increment,
         decrement: this.decrement,
         removeItem: this.removeItem,
-        clearCart: this.clearCart
+        clearCart: this.clearCart,
+        filterItems: this.filterItems
       }}>
         {this.props.children}
       </ProductContext.Provider>
